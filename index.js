@@ -25,6 +25,20 @@ inpBtn.addEventListener("click", function () {
     }
     console.log(inpVal)
     urlList.push(inpVal)
+
+    const returnedValueFromStorage = localStorage.getItem("myLeads");
+
+    if(returnedValueFromStorage === null || returnedValueFromStorage === undefined || returnedValueFromStorage === ""){
+        localStorage.setItem("myLeads", JSON.stringify(urlList));
+    }
+    else {
+        let myLeadsFromLocalStorage = JSON.parse(returnedValueFromStorage);
+        
+        // myLeadsFromLocalStorage = JSON.parse(myLeadsFromLocalStorage)
+        
+        myLeadsFromLocalStorage.push(inpVal);
+        localStorage.setItem("myLeads", JSON.stringify(myLeadsFromLocalStorage));
+    }
     inpEl.value = ""
     renderLists(urlList)
 })
