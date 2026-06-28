@@ -30,8 +30,13 @@ inpBtn.addEventListener("click", function(){
 })
 
 tabBtn.addEventListener("dblclick", function(){
-    urlList.push(inputValue)
-    localStorage.setItem("myLeads", JSON.stringify(urlList))
+    tabs.query({active: true, currentWindow: true}, function(tabs){
+        const currentTab = tabs[0];
+        urlList.push(currentTab.url);
+        console.log(currentTab.url);
+        localStorage.setItem("myLeads", JSON.stringify(urlList));
+        renderLists(urlList);
+    });
 })
 
 function renderLists(arrVal){
