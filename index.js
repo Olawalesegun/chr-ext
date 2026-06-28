@@ -30,16 +30,16 @@ inpBtn.addEventListener("click", function () {
 })
 
 tabBtn.addEventListener("dblclick", function () {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tab) {
 
-        console.log(tabs);
+        console.log(tab);
 
-        if (tabs.length === 0) {
+        if (tab.length === 0) {
             console.log("No tabs found");
             return;
         }
 
-        const currentTab = tabs[0];
+        const currentTab = tab[0];
         console.log(currentTab);
 
         urlList.push(currentTab.url);
