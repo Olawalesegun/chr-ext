@@ -32,7 +32,7 @@ inpBtn.addEventListener("click", function () {
 tabBtn.addEventListener("dblclick", function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 
-        console.logs(tabs);
+        console.log(tabs);
 
         if (tabs.length === 0) {
             console.log("No tabs found");
@@ -41,7 +41,7 @@ tabBtn.addEventListener("dblclick", function () {
 
         const currentTab = tabs[0];
         console.log(currentTab);
-        
+
         urlList.push(currentTab.url);
         console.log(currentTab.url);
         localStorage.setItem("myLeads", JSON.stringify(urlList));
